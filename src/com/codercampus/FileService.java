@@ -3,6 +3,8 @@ package com.codercampus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class FileService {
 
@@ -27,8 +29,25 @@ public class FileService {
 	Student[] CompSci = new Student[100];
 	Student[] Apmth = new Student[100];
 	Student[] Stat = new Student[100];
-//	for (Student student : students) {
-//		if(student.getStudentGrade().contains("CompSci"))
-//	}
 
+	for(Student student:students) {
+		if (student.getStudentGrade().contains("CompSci")) {
+			System.out.println(student.getStudentName());
+
+		} else if (student.getStudentGrade().contains("Apmth")) {
+			System.out.println(student.getStudentName());
+		} else {
+			System.out.println(student.getStudentName());
+
+		}
+		Arrays.sort(students, new Comparator<Student>() {
+
+			@Override
+			public int compare(Student student1, Student student2) {
+				
+				return student1.getClass().compareTo(student2.getClass());
+			}
+			
+		}
+}}
 }

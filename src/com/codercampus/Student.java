@@ -1,6 +1,6 @@
 package com.codercampus;
 
-public class Student {
+public class Student{
 	private String studentName;
 	private String studentCourse;
 	private String  studentId;
