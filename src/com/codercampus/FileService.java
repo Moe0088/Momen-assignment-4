@@ -24,30 +24,43 @@ public class FileService {
 		reader.close();
 
 		return students;
+
 	}
 
+// creating students Arrays
 	Student[] CompSci = new Student[100];
 	Student[] Apmth = new Student[100];
 	Student[] Stat = new Student[100];
+	{
+		// populate an arrays
+		int compSciCount = 0;
+		int apmthCount = 0;
+		int statCount = 0;
+		for (Student student : students) {
+			if (student.getStudentCourse().contains("CompSci")) {
+				CompSci[compSciCount++] = student;
+			} else if (student.getStudentCourse().contains("Apmth")) {
+				Apmth[apmthCount++] = student;
+			} else if (student.getStudentCourse().contains("Stat")) {
+				Stat[statCount++] = student;
 
-	for(Student student:students) {
-		if (student.getStudentGrade().contains("CompSci")) {
-			System.out.println(student.getStudentName());
-
-		} else if (student.getStudentGrade().contains("Apmth")) {
-			System.out.println(student.getStudentName());
-		} else {
-			System.out.println(student.getStudentName());
-
+			}
 		}
-		Arrays.sort(students, new Comparator<Student>() {
+	}
+
+	// creating a method for sorting
+	public void studentSorting(Student[] students, Student[] CompSci, Student[] Apmth, Student[] Stat) {
+		Arrays.sort(students , new Comparator<Student>() {
+
+		
 
 			@Override
 			public int compare(Student student1, Student student2) {
-				
-				return student1.getClass().compareTo(student2.getClass());
+				// TODO Auto-generated method stub
+				return student1.getStudentCourse().compareTo(student2.getStudentName());
 			}
-			
-		}
-}}
+		
+	});
 }
+}
+
