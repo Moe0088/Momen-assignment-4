@@ -1,7 +1,9 @@
 package com.codercampus;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,40 +29,71 @@ public class FileService {
 
 	}
 
-// creating students Arrays
-	Student[] CompSci = new Student[100];
-	Student[] Apmth = new Student[100];
-	Student[] Stat = new Student[100];
-	{
-		// populate an arrays
-		int compSciCount = 0;
-		int apmthCount = 0;
-		int statCount = 0;
-		for (Student student : students) {
-			if (student.getStudentCourse().contains("CompSci")) {
-				CompSci[compSciCount++] = student;
-			} else if (student.getStudentCourse().contains("Apmth")) {
-				Apmth[apmthCount++] = student;
-			} else if (student.getStudentCourse().contains("Stat")) {
-				Stat[statCount++] = student;
+// creating students Arrays in a method
+	public void putAndSortStudentIntoArray() throws IOException {
+		Student[] CompSci = new Student[1000];
+		Student[] Apmth = new Student[1000];
+		Student[] Stat = new Student[1000];
+		{
+			// populate an arrays
+			int compSciCount = 0;
+			int apmthCount = 0;
+			int statCount = 0;
 
+			for (Student student : students) {
+
+//Separate them into specific classes
+				if (student != null) {
+
+					if (student.getStudentCourse().contains("CompSci")) {
+						CompSci[compSciCount++] = student;
+					} else if (student.getStudentCourse().contains("Apmth")) {
+						Apmth[apmthCount++] = student;
+					} else if (student.getStudentCourse().contains("Stat")) {
+						Stat[statCount++] = student;
+					}
+				}
 			}
 		}
+		sortStudents(CompSci);
+		sortStudents(Apmth);
+		sortStudents(Stat);
+		writeToFile(CompSci, "course1.csv");
+		writeToFile(Apmth, "course2.csv");
+		writeToFile(Stat, "course3.csv");
 	}
 
 	// creating a method for sorting
-	public void studentSorting(Student[] students, Student[] CompSci, Student[] Apmth, Student[] Stat) {
-		Arrays.sort(students , new Comparator<Student>() {
-
-		
+	public void sortStudents(Student[] students) {
+		Arrays.sort(students, new Comparator<Student>() {
 
 			@Override
 			public int compare(Student student1, Student student2) {
-				// TODO Auto-generated method stub
-				return student1.getStudentCourse().compareTo(student2.getStudentName());
+				Integer grade1 = convertGraderAsanInt(student1);
+				Integer grade2 = convertGraderAsanInt(student2);
+				return Integer.compare(grade1, grade2);
 			}
-		
-	});
-}
-}
 
+// this method is the compare an int to an integer
+			private Integer convertGraderAsanInt(Student student) {
+
+				return Integer.parseInt(student.getStudentGrade());
+			}
+
+		});
+	}
+
+//creating method to write into a file
+
+	public static void writeToFile(Student[] students, String fileName) throws IOException {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+			writer.write("Student ID,Student Name,Course,Grade\n");
+			for (Student student : students) {
+				if (student != null) {
+					writer.write(student.getStudentId() + "," + student.getStudentName() + ","
+							+ student.getStudentCourse() + "," + student.getStudentGrade() + "\n");
+				}
+			}
+		}
+	}
+}
