@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 public class FileService {
 
-	Student[] students = new Student[1000];
+	Student[] students = new Student[100];
 
 	public Student[] readFile() throws Exception {
 
@@ -31,9 +31,9 @@ public class FileService {
 
 // creating students Arrays in a method
 	public void putAndSortStudentIntoArray() throws IOException {
-		Student[] CompSci = new Student[1000];
-		Student[] Apmth = new Student[1000];
-		Student[] Stat = new Student[1000];
+		Student[] CompSci = new Student[34];
+		Student[] Apmth = new Student[33];
+		Student[] Stat = new Student[33];
 		{
 			// populate an arrays
 			int compSciCount = 0;
