@@ -74,7 +74,7 @@ public class FileService {
 				return Integer.compare(grade1, grade2);
 			}
 
-// this method is the compare an int to an integer
+// This method is the compare an int to an integer
 			private Integer convertGraderAsanInt(Student student) {
 
 				return Integer.parseInt(student.getStudentGrade());
