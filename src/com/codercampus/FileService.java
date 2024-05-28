@@ -17,6 +17,7 @@ public class FileService {
 		BufferedReader reader = new BufferedReader(new FileReader("student-master-list.csv"));
 		String line;
 		int i = 0;
+		reader.readLine();
 		while ((line = reader.readLine()) != null) {
 			String[] parts = line.split(",");
 			students[i] = new Student(parts[0], parts[1], parts[2], parts[3]);
