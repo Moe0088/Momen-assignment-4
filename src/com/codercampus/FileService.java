@@ -77,7 +77,9 @@ public class FileService {
 
 // This method is the compare an int to an integer
 			private Integer convertGraderAsanInt(Student student) {
-
+				if (student == null) {
+					return 0;
+				}
 				return Integer.parseInt(student.getStudentGrade());
 			}
 
@@ -94,6 +96,7 @@ public class FileService {
 					writer.write(student.getStudentId() + "," + student.getStudentName() + ","
 							+ student.getStudentCourse() + "," + student.getStudentGrade() + "\n");
 				}
+
 			}
 		}
 	}
