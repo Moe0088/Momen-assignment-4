@@ -20,6 +20,7 @@ public class FileService {
 		reader.readLine();
 		while ((line = reader.readLine()) != null) {
 			String[] parts = line.split(",");
+
 			students[i] = new Student(parts[0], parts[1], parts[2], parts[3]);
 			i++;
 		}
@@ -45,13 +46,16 @@ public class FileService {
 
 //Separate them into specific classes
 				if (student != null) {
-
+					System.out.println("Checking course for student: " + student.getStudentName() + " - "
+							+ student.getStudentCourse());
 					if (student.getStudentCourse().contains("CompSci")) {
 						CompSci[compSciCount++] = student;
 					} else if (student.getStudentCourse().contains("Apmth")) {
 						Apmth[apmthCount++] = student;
 					} else if (student.getStudentCourse().contains("Stat")) {
 						Stat[statCount++] = student;
+					} else {
+						System.out.println("Course not recognized for student: " + student.getStudentName());
 					}
 				}
 			}

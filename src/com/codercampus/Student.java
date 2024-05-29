@@ -1,16 +1,18 @@
 package com.codercampus;
 
-public class Student{
+public class Student {
+	private String studentId;
 	private String studentName;
 	private String studentCourse;
-	private String  studentId;
 	private String studentGrade;
 
-	public Student(String studentName, String studentCourse, String studentId, String studentGrade) {
+	
 
+	public Student(String studentId, String studentName, String studentCourse, String studentGrade) {
+		
+		this.studentId = studentId;
 		this.studentName = studentName;
 		this.studentCourse = studentCourse;
-		this.studentId = studentId;
 		this.studentGrade = studentGrade;
 	}
 
@@ -45,7 +47,5 @@ public class Student{
 	public void setStudentGrade(String studentGrade) {
 		this.studentGrade = studentGrade;
 	}
-
-	
 
 }
