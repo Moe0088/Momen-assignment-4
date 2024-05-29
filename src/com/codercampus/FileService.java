@@ -48,11 +48,11 @@ public class FileService {
 				if (student != null) {
 					System.out.println("Checking course for student: " + student.getStudentName() + " - "
 							+ student.getStudentCourse());
-					if (student.getStudentCourse().contains("CompSci")) {
+					if (student.getStudentCourse().contains("COMPSCI")) {
 						CompSci[compSciCount++] = student;
-					} else if (student.getStudentCourse().contains("Apmth")) {
+					} else if (student.getStudentCourse().contains("APMTH")) {
 						Apmth[apmthCount++] = student;
-					} else if (student.getStudentCourse().contains("Stat")) {
+					} else if (student.getStudentCourse().contains("STAT")) {
 						Stat[statCount++] = student;
 					} else {
 						System.out.println("Course not recognized for student: " + student.getStudentName());
@@ -76,7 +76,7 @@ public class FileService {
 			public int compare(Student student1, Student student2) {
 				Integer grade1 = convertGraderAsanInt(student1);
 				Integer grade2 = convertGraderAsanInt(student2);
-				return Integer.compare(grade1, grade2);
+				return Integer.compare(grade2, grade1);
 			}
 
 // This method is the compare an int to an integer
